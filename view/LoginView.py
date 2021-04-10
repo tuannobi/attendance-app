@@ -1,5 +1,9 @@
+import tkinter
 from tkinter import *
 from tkinter import messagebox
+from model.User import User
+from service.UserService import UserService
+from view.MainView import App
 
 class LoginView:
 
@@ -9,12 +13,21 @@ class LoginView:
         self.password__login_entry = Entry(self.login_screen)
         self.username = StringVar(self.username_login_entry, value="admin")
         self.password = StringVar(self.password__login_entry, value="123456")
+        self.token=""
 
     
     def __processLogin(self,event):
         # messagebox.showinfo('Message', 'Please insert into hopeful')
-        print(self.username_login_entry.get())
-        print(self.password__login_entry.get())
+        username = self.username_login_entry.get()
+        password = self.password__login_entry.get()
+        user=User(username,password)
+        userService = UserService()
+        result=userService.getTokenString(user)
+        if (result == 0):
+            messagebox.showinfo('Error', 'Username or password is incorrect!')
+        self.token=result
+        self.login_screen.destroy()
+        App(self.token,tkinter.Tk(), "Attendance System App")
 
     def showLoginGUI(self):
         self.login_screen.title("Login") #set title for frame
