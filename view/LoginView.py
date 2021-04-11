@@ -3,7 +3,8 @@ from tkinter import *
 from tkinter import messagebox
 from model.User import User
 from service.UserService import UserService
-from view.MainView import App
+# from view.MainView import App
+from view.SelectClassView import SelectClassView
 
 class LoginView:
 
@@ -27,7 +28,9 @@ class LoginView:
             messagebox.showinfo('Error', 'Username or password is incorrect!')
         self.token=result
         self.login_screen.destroy()
-        App(self.token,tkinter.Tk(), "Attendance System App")
+        # App(self.token,username,tkinter.Tk(), "Attendance System App")
+        select = SelectClassView(self.token, username)
+        select.showSelectClassView()
 
     def showLoginGUI(self):
         self.login_screen.title("Login") #set title for frame

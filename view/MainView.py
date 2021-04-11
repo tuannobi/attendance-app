@@ -4,7 +4,7 @@ import PIL.Image, PIL.ImageTk
 import time
   
 class App:
-    def __init__(self, token,window, window_title, video_source=0):
+    def __init__(self,token,class_id,window, window_title, video_source=0):
         self.token = token
         print(self.token)
         self.window = window
