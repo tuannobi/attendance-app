@@ -12,7 +12,7 @@ class LoginView:
         self.login_screen = Tk()
         self.username_login_entry =  Entry(self.login_screen)
         self.password__login_entry = Entry(self.login_screen)
-        self.username = StringVar(self.username_login_entry, value="admin")
+        self.username = StringVar(self.username_login_entry, value="teacher")
         self.password = StringVar(self.password__login_entry, value="123456")
         self.token=""
 
